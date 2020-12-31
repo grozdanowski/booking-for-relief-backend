@@ -60,6 +60,13 @@
       "type": "boolean",
       "default": false,
       "private": false
+    },
+    "volunteer_assigned": {
+      "type": "string",
+      "private": true
+    },
+    "notes": {
+      "type": "richtext"
     }
   }
 }
