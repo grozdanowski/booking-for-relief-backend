@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aid_requests",
+  "info": {
+    "name": "Aid Request"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "contact_name": {
+      "type": "string",
+      "required": true
+    },
+    "contact_phone": {
+      "type": "string",
+      "required": true
+    },
+    "submitter_email": {
+      "type": "email",
+      "required": true
+    },
+    "available_on_whatsapp": {
+      "type": "boolean",
+      "default": false
+    },
+    "locationLat": {
+      "type": "float"
+    },
+    "locationLon": {
+      "type": "float"
+    },
+    "fulfilled": {
+      "type": "boolean",
+      "default": false,
+      "private": true
+    }
+  }
+}

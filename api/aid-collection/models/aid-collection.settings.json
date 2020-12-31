@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aid_collections",
+  "info": {
+    "name": "Aid Collection",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "aid_destination": {
+      "type": "string",
+      "required": true
+    },
+    "startdate": {
+      "type": "datetime"
+    },
+    "enddate": {
+      "type": "datetime"
+    },
+    "description": {
+      "type": "text",
+      "private": false,
+      "required": true
+    },
+    "contact_name": {
+      "type": "string",
+      "required": true
+    },
+    "contact_phone": {
+      "type": "string",
+      "required": true
+    },
+    "submitter_email": {
+      "type": "string",
+      "required": true
+    },
+    "available_on_whatsapp": {
+      "type": "boolean"
+    },
+    "locationLat": {
+      "type": "float"
+    },
+    "locationLon": {
+      "type": "float"
+    },
+    "fulfilled": {
+      "type": "boolean",
+      "private": true,
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transports",
+  "info": {
+    "name": "Transport",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "startdate": {
+      "type": "datetime"
+    },
+    "enddate": {
+      "type": "datetime"
+    },
+    "contact_name": {
+      "type": "string",
+      "required": true
+    },
+    "contact_phone": {
+      "type": "string",
+      "required": true
+    },
+    "submitter_email": {
+      "type": "email",
+      "required": true
+    },
+    "available_on_whatsapp": {
+      "type": "boolean"
+    },
+    "vehicle_type": {
+      "type": "string",
+      "required": true
+    },
+    "vehicle_model": {
+      "type": "string"
+    },
+    "locationLat": {
+      "type": "float"
+    },
+    "locationLon": {
+      "type": "float"
+    },
+    "fulfilled": {
+      "type": "boolean",
+      "default": false,
+      "private": true
+    }
+  }
+}
