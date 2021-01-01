@@ -64,6 +64,9 @@
     "notes": {
       "type": "richtext",
       "private": true
+    },
+    "comments": {
+      "collection": "comment"
     }
   }
 }
