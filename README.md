@@ -1,3 +1,3 @@
-# Strapi application
+Booking for relief: https://booking-for-relief.vercel.app/
 
-A quick description of your strapi application
+Admin interface: https://lit-coast-00350.herokuapp.com/admin/
