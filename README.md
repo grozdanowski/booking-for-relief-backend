@@ -80,6 +80,8 @@ It has hot reloading as you code and all of other niceties. Nice niceties. Nice.
 
 # Deployment
 The backend for this app was deployed to Heroku, while the frontend is deployed to Vercel. To deploy use the simple standard deployment instructions from respective docs linked above.
+# Contributing
+Rules are in place that prevent direct pushes to the main branch. In order to contribute, please create a new branch and create a PR. Once a PR is approved by code owner(s), it will be merged and, in case of frontend, automatically deployed.
 
 # Another thing
 Yes, we know we have flaws in the code, but please keep in mind it's done in sleepless nights under high stress from a damn natural and humanitarian disaster. If you can, please feel free to help us improve. If not - please refrain from malicious intents. Thank you.
