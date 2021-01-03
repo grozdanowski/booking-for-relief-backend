@@ -1,3 +1,1 @@
-# Strapi application
-
-A quick description of your strapi application
+Booking for relief: https://booking-for-relief.vercel.app/
