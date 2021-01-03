@@ -48,14 +48,17 @@
     },
     "volunteer_assigned": {
       "type": "string",
-      "private": true
+      "private": false
     },
     "notes": {
       "type": "richtext",
-      "private": true
+      "private": false
     },
     "comments": {
       "collection": "comment"
+    },
+    "tags": {
+      "type": "string"
     }
   }
 }

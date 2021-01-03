@@ -63,13 +63,19 @@
     },
     "volunteer_assigned": {
       "type": "string",
-      "private": true
+      "private": false
     },
     "notes": {
       "type": "richtext"
     },
     "comments": {
       "collection": "comment"
+    },
+    "submitter_ip": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "string"
     }
   }
 }

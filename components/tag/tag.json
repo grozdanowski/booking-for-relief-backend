@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_tag_tags",
+  "info": {
+    "name": "tag",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "string"
+    }
+  }
+}

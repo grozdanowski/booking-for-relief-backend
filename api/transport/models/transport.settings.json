@@ -67,6 +67,9 @@
     },
     "comments": {
       "collection": "comment"
+    },
+    "tags": {
+      "type": "string"
     }
   }
 }
