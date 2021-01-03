@@ -45,7 +45,8 @@
     },
     "submitter_email": {
       "type": "email",
-      "required": true
+      "required": true,
+      "private": true
     },
     "available_on_whatsapp": {
       "type": "boolean"
