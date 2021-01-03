@@ -17,7 +17,7 @@
     },
     "aid_destination": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "startdate": {
       "type": "datetime"
