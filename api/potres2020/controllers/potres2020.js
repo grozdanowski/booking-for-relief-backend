@@ -80,7 +80,7 @@ module.exports = {
               { id: existingResult.id },
               {
                 fulfilled: true,
-                notes: existingResult.notes ? `${existingResult.notes} \n ${timeNow}` : ``
+                notes: existingResult.notes ? `${existingResult.notes} \n Potres2020 arhivirano: ${timeNow}` : ``
               }
             )
           } catch (e) {
