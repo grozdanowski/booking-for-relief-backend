@@ -58,6 +58,7 @@ module.exports = {
 
   markDone: async ctx => {
     const item = ctx.request.body;
+    const timeNow = new Date();
     if (item.values && (item.status === 'archived')) {
       const formId = item.form ? item.form.id : item.form_id;
       switch (formId) {
@@ -79,6 +80,7 @@ module.exports = {
               { id: existingResult.id },
               {
                 fulfilled: true,
+                notes: existingResult.notes ? `${existingResult.notes} \n ${timeNow}` : ``
               }
             )
           } catch (e) {
