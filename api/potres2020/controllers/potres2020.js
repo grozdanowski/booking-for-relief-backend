@@ -23,6 +23,7 @@ module.exports = {
         'contact_phone': item.values['1328cf24-09de-44cd-b159-6242e6165530'] ? item.values['1328cf24-09de-44cd-b159-6242e6165530'][0] : '',
         'submitter_email': 'potres@2020.hr',
         'available_on_whatsapp': false,
+        'fulfilled': false,
         'original_app_id': item.id,
       }
       console.log(newData);
@@ -43,7 +44,8 @@ module.exports = {
       } catch (e) {
         throw new Error('Unable to add the entry.');
       }
-      ctx.send({});
+      console.log('Novi entry dodan!');
+      ctx.send('Entry dodan!');
     } else {
       ctx.badRequest('Received data not valid.');
       ctx.send({});
