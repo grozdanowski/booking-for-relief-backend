@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/potres-2020/create",
+      "handler": "potres2020.createGet",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/potres-2020/create",
+      "handler": "potres2020.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/potres-2020/mark-done",
+      "handler": "potres2020.markDone",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/potres-2020/test",
+      "handler": "potres2020.test",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
