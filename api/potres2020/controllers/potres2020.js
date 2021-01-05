@@ -59,7 +59,9 @@ module.exports = {
   markDone: async ctx => {
     const item = ctx.request.body;
     const timeNow = new Date();
+    console.log(`Received an event about a change in ${item.id}.`)
     if (item.values && (item.status === 'archived')) {
+      console.log(`Item archived. Proceeding to sync.`)
       const formId = item.form ? item.form.id : item.form_id;
       switch (formId) {
         case 5:
@@ -75,6 +77,7 @@ module.exports = {
       try {
         const existingResult = await strapi.query(endpoint).findOne({ original_app_id: item.id });
         if (existingResult) {
+          console.log(`Found item in current system. Item id: ${existingResult.id}, in ${endpoint}.`)
           try {
             await strapi.query(endpoint).update(
               { id: existingResult.id },
