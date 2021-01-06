@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "item_tags",
+  "info": {
+    "name": "Item tag"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tag": {
+      "type": "string",
+      "private": false,
+      "required": true,
+      "unique": true
+    }
+  }
+}
