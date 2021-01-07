@@ -80,6 +80,9 @@
     },
     "original_app_id": {
       "type": "integer"
+    },
+    "volunteerMarkedAsDone": {
+      "type": "boolean"
     }
   }
 }
