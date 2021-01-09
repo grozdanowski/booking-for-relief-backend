@@ -1,3 +1,3 @@
 module.exports = ({ env }) => ({
-  url: env('HEROKU_URL'),
+  url: 'https://relief-app-backend.herokuapp.com',
 });
