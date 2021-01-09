@@ -3,10 +3,7 @@
     {
       "method": "GET",
       "path": "/data-api/latest",
-      "handler": "data-api.getLatest",
-      "config": {
-        "policies": []
-      }
+      "handler": "data-api.getLatest"
     }
   ]
 }
