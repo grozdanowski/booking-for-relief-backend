@@ -5,7 +5,7 @@ This app was developed (hastily) when a massive earthquake hit central Croatia. 
 
 ## Current deployment
 Frontend (public): [https://booking-for-relief.vercel.app/](https://booking-for-relief.vercel.app/)
-Backend (volunteer coordinators and admins): [https://lit-coast-00350.herokuapp.com/admin](https://lit-coast-00350.herokuapp.com/admin)
+Backend (volunteer coordinators and admins): [https://relief-app-backend.herokuapp.com/admin](https://relief-app-backend.herokuapp.com/admin)
 
 ## Architecture
 Booking for Relief is fully open source. The backend is powered by [Strapi](https://strapi.io/documentation/developer-docs/latest/getting-started/introduction.html), and meant to be deployed to Heroku for speed and scaling purposes. The frontend consumes the data via an API, and is made in [NextJS](https://nextjs.org/docs) - again for purposes of speed in both development, as well as speed in rendering on mobile devices (SSR capabilities and all).
