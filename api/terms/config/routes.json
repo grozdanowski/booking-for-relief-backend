@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/terms",
+      "handler": "terms.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/terms",
+      "handler": "terms.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/terms",
+      "handler": "terms.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
