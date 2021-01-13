@@ -77,6 +77,10 @@
     },
     "volunteerMarkedAsDone": {
       "type": "boolean"
+    },
+    "assigned_dispatcher": {
+      "plugin": "admin",
+      "model": "user"
     }
   }
 }
