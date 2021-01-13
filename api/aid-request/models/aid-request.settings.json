@@ -66,6 +66,20 @@
     },
     "volunteerMarkedAsDone": {
       "type": "boolean"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "novo",
+        "provjereno",
+        "rizicno_opasno",
+        "preuzeto",
+        "u_izvrsavanju",
+        "parcijalno_rijeseno",
+        "treba_ponoviti",
+        "zavrseno"
+      ],
+      "default": "novo"
     }
   }
 }
