@@ -82,8 +82,7 @@
       "default": "novo"
     },
     "assigned_dispatcher": {
-      "plugin": "admin",
-      "model": "user"
+      "model": "coordinators"
     }
   }
 }

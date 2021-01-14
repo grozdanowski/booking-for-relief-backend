@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/coordinators",
+      "handler": "coordinators.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/coordinators/count",
+      "handler": "coordinators.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/coordinators/:id",
+      "handler": "coordinators.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/coordinators",
+      "handler": "coordinators.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/coordinators/:id",
+      "handler": "coordinators.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/coordinators/:id",
+      "handler": "coordinators.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

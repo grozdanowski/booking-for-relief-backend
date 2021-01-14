@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coordinators",
+  "info": {
+    "name": "Coordinators"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    }
+  }
+}
