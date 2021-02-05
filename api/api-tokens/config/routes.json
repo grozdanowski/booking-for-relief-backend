@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api-tokens",
+      "handler": "api-tokens.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api-tokens",
+      "handler": "api-tokens.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api-tokens",
+      "handler": "api-tokens.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

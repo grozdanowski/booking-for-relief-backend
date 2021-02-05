@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_nested_components_api_tokens",
+  "info": {
+    "name": "api-token",
+    "icon": "key"
+  },
+  "options": {},
+  "attributes": {
+    "app_name": {
+      "type": "string",
+      "private": true,
+      "required": true,
+      "unique": true
+    },
+    "token_key": {
+      "type": "string",
+      "private": true,
+      "required": true,
+      "minLength": 32,
+      "maxLength": 128
+    },
+    "note": {
+      "type": "text"
+    }
+  }
+}

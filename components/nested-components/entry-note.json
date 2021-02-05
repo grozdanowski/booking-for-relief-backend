@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_nested_components_entry_notes",
+  "info": {
+    "name": "entry_note",
+    "icon": "comment"
+  },
+  "options": {},
+  "attributes": {
+    "note_content": {
+      "type": "text"
+    }
+  }
+}

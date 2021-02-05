@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "public_site_settings",
+  "info": {
+    "name": "Public site settings",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "site_title": {
+      "type": "string",
+      "required": true
+    },
+    "site_description": {
+      "type": "text"
+    },
+    "og_share_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "header_menu_marketing_items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "nested-components.header-menu-marketing-items"
+    },
+    "footer_menu_items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "nested-components.header-menu-marketing-items"
+    },
+    "footer_notice_text": {
+      "type": "text"
+    },
+    "map_zones": {
+      "type": "json"
+    },
+    "donor_instructions": {
+      "type": "richtext"
+    }
+  }
+}

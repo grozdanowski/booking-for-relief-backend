@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "static_pages",
+  "info": {
+    "name": "Static page",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "page_title": {
+      "type": "string",
+      "required": true
+    },
+    "page_description": {
+      "type": "text"
+    },
+    "page_content": {
+      "type": "richtext"
+    },
+    "page_slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

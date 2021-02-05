@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entry_categories",
+  "info": {
+    "name": "Entry category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "type_slug": {
+      "type": "string",
+      "private": false,
+      "required": true,
+      "unique": true
+    },
+    "type_name": {
+      "type": "string",
+      "required": true
+    },
+    "available_in_public_menu": {
+      "type": "boolean",
+      "default": true
+    },
+    "menu_title": {
+      "type": "string",
+      "required": true
+    },
+    "plural_title": {
+      "type": "string",
+      "required": true
+    },
+    "category_color_hex": {
+      "type": "string",
+      "default": "#0090c1"
+    },
+    "entries": {
+      "collection": "entry",
+      "via": "entry_category"
+    },
+    "category_map_pin_icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "category_map_pin_icon_assigned": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "add_entry_label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

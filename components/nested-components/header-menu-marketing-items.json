@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_nested_components_header_menu_marketing_items",
+  "info": {
+    "name": "header_menu_marketing_items",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "item_url": {
+      "type": "string"
+    },
+    "item_title": {
+      "type": "string"
+    }
+  }
+}

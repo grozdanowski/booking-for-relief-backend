@@ -1,0 +1,100 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Entries",
+  "info": {
+    "name": "Entry",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "location": {
+      "type": "string"
+    },
+    "location_latitude": {
+      "type": "float"
+    },
+    "location_longitude": {
+      "type": "float"
+    },
+    "description": {
+      "type": "text"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "contact_available_on_whatsapp": {
+      "type": "boolean",
+      "default": false
+    },
+    "contact_available_on_telegram": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "novo",
+        "provjereno",
+        "rizicno_opasno",
+        "preuzeto",
+        "u_izvrsavanju",
+        "parcijalno_rijeseno",
+        "treba_ponoviti",
+        "zavrseno"
+      ]
+    },
+    "assigned_coordinator": {
+      "model": "coordinators"
+    },
+    "volunteer_assigned": {
+      "type": "string"
+    },
+    "done": {
+      "type": "boolean",
+      "default": false
+    },
+    "follow_up_date": {
+      "type": "date"
+    },
+    "tags": {
+      "type": "string"
+    },
+    "date_from": {
+      "type": "datetime"
+    },
+    "date_until": {
+      "type": "datetime"
+    },
+    "entry_category": {
+      "via": "entries",
+      "model": "entry-category"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "comments": {
+      "collection": "comment"
+    },
+    "integrations_data": {
+      "type": "json"
+    },
+    "volunteer_marked_as_done": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

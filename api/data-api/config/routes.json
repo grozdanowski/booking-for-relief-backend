@@ -4,6 +4,72 @@
       "method": "GET",
       "path": "/data-api/latest",
       "handler": "data-api.getLatest"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/available-categories",
+      "handler": "data-api.availableEntryCategories"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/all-entries",
+      "handler": "data-api.availableEntries"
+    },
+    
+    {
+      "method": "GET",
+      "path": "/data-api/latest-entries",
+      "handler": "data-api.latestEntries"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/category-entries/:slug",
+      "handler": "data-api.allEntriesInCategory"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/search-entries/:term",
+      "handler": "data-api.entriesSearch"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/volunteer-assigned-entries/:volunteer",
+      "handler": "data-api.entriesSearchByAssignedVolunteer"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/entry/:id",
+      "handler": "data-api.singleEntry"
+    },
+
+    {
+      "method": "POST",
+      "path": "/data-api/add-entry",
+      "handler": "data-api.addEntry"
+    },
+
+    {
+      "method": "POST",
+      "path": "/data-api/add-entry-comment",
+      "handler": "data-api.addCommentToEntry"
+    },
+
+    {
+      "method": "POST",
+      "path": "/data-api/set-entry-volunteer",
+      "handler": "data-api.setVolunteerAssignmentToEntry"
+    },
+
+    {
+      "method": "POST",
+      "path": "/data-api/volunteer-mark-entry-done",
+      "handler": "data-api.setVolunteerMarkedEntryDone"
     }
   ]
 }

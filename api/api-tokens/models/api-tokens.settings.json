@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "api_tokens",
+  "info": {
+    "name": "API tokens",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "api_token": {
+      "type": "component",
+      "repeatable": true,
+      "component": "nested-components.api-token"
+    }
+  }
+}
