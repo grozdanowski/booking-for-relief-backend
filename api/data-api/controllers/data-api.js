@@ -407,7 +407,7 @@ module.exports = {
     if (tokenValid) {
       const integration = ctx.request.body.integration;
       const data = ctx.request.body.data;
-      const requiredFields = data.title && data.description && data.location && data.contact_name && data.contact_phone && data.tags;
+      const requiredFields = data.title && data.description && data.location && data.contact_name && data.contact_phone;
       if (integration && requiredFields) {
         // check if required integration data is passed
         if (integration.name && integration.original_id) {
