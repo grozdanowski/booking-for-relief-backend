@@ -425,7 +425,10 @@ module.exports = {
                 'last_synced_on': timeNow,
               }
               const newEntry = await strapi.query('entry').create(data);
-              ctx.send(newEntry)
+              ctx.send({
+                'result': 'Entry successfully added.',
+                'entry': newEntry,
+              })
             }
             ctx.send(matchingEntry)
           } catch (e) {
