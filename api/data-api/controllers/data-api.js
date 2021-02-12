@@ -13,7 +13,7 @@ async function checkToken (suppliedToken) {
 }
 
 async function matchIntegrationDataWithId (integrationName, originalId) {
-  const allIntegrationEntries = await strapi.query('entry').find({ integrations_data_contains: integrationName });
+  const allIntegrationEntries = await strapi.query('entry').find({ integrations_data_null: false });
   const matchingEntry = allIntegrationEntries.find( entry => {
     if (entry.integrations_data[integrationName]) {
       return (entry.integrations_data[integrationName]['original_id'] === originalId)
