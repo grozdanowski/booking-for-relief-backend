@@ -70,6 +70,18 @@
       "method": "POST",
       "path": "/data-api/volunteer-mark-entry-done",
       "handler": "data-api.setVolunteerMarkedEntryDone"
+    },
+
+    {
+      "method": "POST",
+      "path": "/data-api/integration-add-entry",
+      "handler": "data-api.integrationAddEntry"
+    },
+
+    {
+      "method": "POST",
+      "path": "/data-api/integration-update-entry",
+      "handler": "data-api.integrationUpdateEntry"
     }
   ]
 }
