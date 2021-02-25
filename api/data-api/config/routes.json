@@ -82,6 +82,18 @@
       "method": "POST",
       "path": "/data-api/integration-update-entry",
       "handler": "data-api.integrationUpdateEntry"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/static-pages-list",
+      "handler": "data-api.staticPagesList"
+    },
+
+    {
+      "method": "GET",
+      "path": "/data-api/static-page/:slug",
+      "handler": "data-api.singleStaticPage"
     }
   ]
 }

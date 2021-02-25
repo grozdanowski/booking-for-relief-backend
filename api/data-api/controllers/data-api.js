@@ -492,4 +492,67 @@ module.exports = {
       ctx.unauthorized(`No valid token!`);
     }
   },
+
+  staticPagesList: async ctx => {
+
+    const tokenValid = await checkToken(ctx.request.header.authorization);
+    if (tokenValid) {
+      const entryId = ctx.params.id;
+      try {
+        // fetch data from DB
+        const pages = await strapi.query('static-page').find();
+        pages.forEach(function(item){ delete item.created_by; delete item.updated_by });
+        // return
+        ctx.send({
+          'pages': pages,
+        });
+      } catch (e) {
+        ctx.send({
+          'pages': [],
+        });
+        throw new Error('Error in fetching static pages list:', e);
+      }
+    } else {
+      ctx.unauthorized(`No valid token!`);
+    }
+  },
+
+  singleStaticPage: async ctx => {
+
+    const tokenValid = await checkToken(ctx.request.header.authorization);
+    if (tokenValid) {
+      const pageSlug = ctx.params.slug;
+      try {
+        // fetch data from DB
+        const page = await strapi.query('static-page').findOne({ page_slug: pageSlug });
+        const itemTags = await strapi.query('item-tag').find({ _sort: 'tag' });
+        const availableEntryCategories = await strapi.query('entry-category').find({ _sort: 'id:asc', available_in_public_menu: true });
+        const publicSiteSettings = await strapi.query('public-site-settings').find();
+        // remove unwanted data
+        delete page.created_by;
+        delete page.updated_by;
+        itemTags.forEach(function(item){ delete item.created_by; delete item.updated_by });
+        availableEntryCategories.forEach(function(item){ delete item.created_by; delete item.updated_by });
+        publicSiteSettings.forEach(function(item){ delete item.created_by; delete item.updated_by });
+        // return
+        ctx.send({
+          'page': page,
+          'itemTags': itemTags,
+          'availableEntryCategories': availableEntryCategories,
+          'publicSiteSettings': publicSiteSettings,
+        });
+      } catch (e) {
+        ctx.send({
+          'page': [],
+          'itemTags': [],
+          'availableEntryCategories': [],
+          'publicSiteSettings': null,
+        });
+        throw new Error('Error in fetching compiled data for a single entry:', e);
+      }
+    } else {
+      ctx.unauthorized(`No valid token!`);
+    }
+
+  },
 }
