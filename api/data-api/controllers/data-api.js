@@ -65,7 +65,7 @@ module.exports = {
 
     const tokenValid = await checkToken(ctx.request.header.authorization);
     if (tokenValid) {
-      
+
     } else {
       ctx.unauthorized(`No valid token!`);
     }
@@ -91,7 +91,7 @@ module.exports = {
 
     const tokenValid = await checkToken(ctx.request.header.authorization);
     if (tokenValid) {
-      
+
     } else {
       ctx.unauthorized(`No valid token!`);
     }
@@ -180,7 +180,7 @@ module.exports = {
           'publicSiteSettings': null,
         });
         throw new Error('Error in fetching compiled data for category entries:', e);
-      } 
+      }
     } else {
       ctx.unauthorized(`No valid token!`);
     }
@@ -218,7 +218,7 @@ module.exports = {
           'publicSiteSettings': null,
         });
         throw new Error('Error in fetching compiled data for entries search:', e);
-      } 
+      }
     } else {
       ctx.unauthorized(`No valid token!`);
     }
@@ -256,7 +256,7 @@ module.exports = {
           'publicSiteSettings': null,
         });
         throw new Error('Error in fetching compiled data for entries search:', e);
-      } 
+      }
     } else {
       ctx.unauthorized(`No valid token!`);
     }
@@ -312,7 +312,7 @@ module.exports = {
           ctx.send(newEntry)
         } catch (e) {
           ctx.send({
-            'result': 'error',  
+            'result': 'error',
           })
           throw new Error('Error in adding an entry:', e);
         }
@@ -341,14 +341,14 @@ module.exports = {
           comments: newEntryComments
         })
         ctx.send({
-          'result': updatedEntry,  
+          'result': updatedEntry,
         })
       } catch (e) {
         ctx.send({
-          'result': 'error',  
+          'result': 'error',
         })
         throw new Error('Error in adding an entry comment:', e);
-      } 
+      }
     } else {
       ctx.unauthorized(`No valid token!`);
     }
@@ -395,7 +395,7 @@ module.exports = {
           'result': 'error'
         })
         throw new Error('Error in setting volunteer assignment:', e);
-      } 
+      }
     } else {
       ctx.unauthorized(`No valid token!`);
     }
@@ -407,10 +407,10 @@ module.exports = {
     if (tokenValid) {
       const integration = ctx.request.body.integration;
       const data = ctx.request.body.data;
-      const requiredFields = data.title && data.description && data.location && data.contact_name && data.contact_phone;
-      if (integration && requiredFields) {
+      const requiredFields = data.title !== null && data.description !== null && data.location !== null && data.contact_name !== null && data.contact_phone !== null;
+      if (integration !== null && requiredFields) {
         // check if required integration data is passed
-        if (integration.name && integration.original_id) {
+        if (integration.name !== null && integration.original_id !== null) {
           // continue
           try {
             const matchingEntry = await matchIntegrationDataWithId(integration.name, integration.original_id);
@@ -419,7 +419,7 @@ module.exports = {
             } else {
               const timeNow = new Date();
               data.integrations_data = {};
-              data.integrations_data[integration.name] = { 
+              data.integrations_data[integration.name] = {
                 'original_id': integration.original_id,
                 'first_synced_on': timeNow,
                 'last_synced_on': timeNow,
@@ -430,10 +430,9 @@ module.exports = {
                 'entry': newEntry,
               })
             }
-            ctx.send(matchingEntry)
           } catch (e) {
             ctx.send({
-              'result': 'error',  
+              'result': 'error',
             })
             throw new Error('Error in adding an entry from an integration:', e);
           }
@@ -468,16 +467,17 @@ module.exports = {
               updatedIntegrationsData[integration.name]['last_synced_on'] = timeNow;
               data.integrations_data = updatedIntegrationsData;
               const updatedEntry = await strapi.query('entry').update({ id: matchingEntry.id }, data);
-              ctx.send(updatedIntegrationsData);
+              ctx.send({
+                'result': 'Entry successfully updated.',
+                'entry': updatedEntry,
+              })
             } else {
               // no matching entry found
-              ctx.notFound(`No matching entry found in the system.`);
-              ctx.send(newEntry)
+              ctx.notFound(`No matching entry found in the system. Integration data: {name=${integration.name}, original_id=${integration.original_id}}`);
             }
-            ctx.send(matchingEntry)
           } catch (e) {
             ctx.send({
-              'result': 'error',  
+              'result': 'error',
             })
             throw new Error('Error in adding an entry from an integration:', e);
           }
