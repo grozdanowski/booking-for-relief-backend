@@ -401,98 +401,6 @@ module.exports = {
     }
   },
 
-  integrationAddEntry: async ctx => {
-
-    const tokenValid = await checkToken(ctx.request.header.authorization);
-    if (tokenValid) {
-      const integration = ctx.request.body.integration;
-      const data = ctx.request.body.data;
-      const requiredFields = data.title !== null && data.description !== null && data.location !== null && data.contact_name !== null && data.contact_phone !== null;
-      if (integration !== null && requiredFields) {
-        // check if required integration data is passed
-        if (integration.name !== null && integration.original_id !== null) {
-          // continue
-          try {
-            const matchingEntry = await matchIntegrationDataWithId(integration.name, integration.original_id);
-            if (matchingEntry) {
-              ctx.forbidden('An entry with the same integration ID and original ID already exists. To change it use the integrations update API endpoint instead of the integrations add entry API endpoint.')
-            } else {
-              const timeNow = new Date();
-              data.integrations_data = {};
-              data.integrations_data[integration.name] = {
-                'original_id': integration.original_id,
-                'first_synced_on': timeNow,
-                'last_synced_on': timeNow,
-              }
-              const newEntry = await strapi.query('entry').create(data);
-              ctx.send({
-                'result': 'Entry successfully added.',
-                'entry': newEntry,
-              })
-            }
-          } catch (e) {
-            ctx.send({
-              'result': 'error',
-            })
-            throw new Error('Error in adding an entry from an integration:', e);
-          }
-        } else {
-          // throw error
-          ctx.badRequest(`Required integration data not passed. Data required: integration: { name: 'X', original_id: 'Y'}`);
-        }
-      } else {
-        ctx.badRequest(`Please provide the integration information (name, original_id) and the data with all required fields (title, description, location, contact_name, contact_phone and tags).`);
-      }
-    } else {
-      ctx.unauthorized(`No valid token!`);
-    }
-  },
-
-  integrationUpdateEntry: async ctx => {
-
-    const tokenValid = await checkToken(ctx.request.header.authorization);
-    if (tokenValid) {
-      const integration = ctx.request.body.integration;
-      const data = ctx.request.body.data;
-      if (integration && data) {
-        // check if required integration data is passed
-        if (integration.name && integration.original_id) {
-          // continue
-          try {
-            const matchingEntry = await matchIntegrationDataWithId(integration.name, integration.original_id);
-            if (matchingEntry) {
-              // do stuff
-              const timeNow = new Date();
-              const updatedIntegrationsData = matchingEntry.integrations_data;
-              updatedIntegrationsData[integration.name]['last_synced_on'] = timeNow;
-              data.integrations_data = updatedIntegrationsData;
-              const updatedEntry = await strapi.query('entry').update({ id: matchingEntry.id }, data);
-              ctx.send({
-                'result': 'Entry successfully updated.',
-                'entry': updatedEntry,
-              })
-            } else {
-              // no matching entry found
-              ctx.notFound(`No matching entry found in the system. Integration data: {name=${integration.name}, original_id=${integration.original_id}}`);
-            }
-          } catch (e) {
-            ctx.send({
-              'result': 'error',
-            })
-            throw new Error('Error in adding an entry from an integration:', e);
-          }
-        } else {
-          // throw error
-          ctx.badRequest(`Required integration data not passed. Data required: integration: { name: 'X', original_id: 'Y'}`);
-        }
-      } else {
-        ctx.badRequest(`Please provide the integration information (name, original_id) and the data with all required fields (title, description, location, contact_name, contact_phone and tags).`);
-      }
-    } else {
-      ctx.unauthorized(`No valid token!`);
-    }
-  },
-
   staticPagesList: async ctx => {
 
     const tokenValid = await checkToken(ctx.request.header.authorization);
@@ -554,5 +462,57 @@ module.exports = {
       ctx.unauthorized(`No valid token!`);
     }
 
+  },
+
+  integrationUpsertEntry: async ctx => {
+    const tokenValid = await checkToken(ctx.request.header.authorization);
+    if (tokenValid) {
+      const integration = ctx.request.body.integration;
+      const data = ctx.request.body.data;
+      if ((integration) && (integration !== null)) {
+        if ((integration.name && integration.original_id) && (integration.name !== null && integration.original_id !== null)) {
+          try {
+            const matchingEntry = await matchIntegrationDataWithId(integration.name, integration.original_id);
+            if (matchingEntry) {
+              const timeNow = new Date();
+              const updatedIntegrationsData = matchingEntry.integrations_data;
+              updatedIntegrationsData[integration.name]['last_synced_on'] = timeNow;
+              data.integrations_data = updatedIntegrationsData;
+              const updatedEntry = await strapi.query('entry').update({ id: matchingEntry.id }, data);
+              ctx.send({
+                'result': 'Entry successfully updated.',
+                'entry': updatedEntry,
+              })
+            } else {
+              const timeNow = new Date();
+              data.integrations_data = {};
+              data.integrations_data[integration.name] = {
+                'original_id': integration.original_id,
+                'first_synced_on': timeNow,
+                'last_synced_on': timeNow,
+              }
+              const newEntry = await strapi.query('entry').create(data);
+              ctx.send({
+                'result': 'Entry successfully added.',
+                'entry': newEntry,
+              })
+            }
+          } catch (e) {
+            ctx.send({
+              'result': 'error',
+            })
+            throw new Error('Error in adding an entry from an integration:', e);
+          }
+        } else {
+          // throw error
+          ctx.badRequest(`Required integration data not passed. Data required: integration: { name: 'X', original_id: 'Y'}`);
+        }
+      } else {
+        // throw error
+        ctx.badRequest(`Required integration data not passed. Data required: integration: { name: 'X', original_id: 'Y'}`);
+      }
+    } else {
+      ctx.unauthorized(`No valid token!`);
+    }
   },
 }

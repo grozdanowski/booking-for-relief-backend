@@ -292,8 +292,8 @@ Expects the following as JSON in request body:
 	    volunteer_marked_as_done: <true/false>
     }
 
-  `POST <backend_url>/integration-add-entry`
-This is built for other app integrations. Used to pull in issues from other apps. Will only add if it does not find an entry with the same integration name and original_id as provided. Expects the following as JSON in request body:
+  `POST <backend_url>/integration-upsert-entry`
+This is built for other app integrations. Used to pull in issues from other apps. Will only add if it does not find an entry with the same integration name and original_id as provided, and if it finds the respective entry it will update it. Expects the following as JSON in request body:
 
     {  
       "data": {  
@@ -304,20 +304,6 @@ This is built for other app integrations. Used to pull in issues from other apps
         "original_id": <id_in_original_app>  
       }  
     }
-
-  `POST <backend_url>/integration-update-entry`
-This is built for other app integrations. Used to pull in issues from other apps. Will only update if it finds an entry with the same integration name and original_id as provided. Expects the following as JSON in request body:
-
-    {  
-      "data": {  
-        <changed_entry_fields>
-      },  
-      "integration": {  
-        "name": "someIntegrationName",  
-        "original_id": <id_in_original_app>  
-      }  
-    }
- 
 
 
 
