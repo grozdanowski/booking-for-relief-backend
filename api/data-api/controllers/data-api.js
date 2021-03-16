@@ -479,6 +479,8 @@ module.exports = {
               updatedIntegrationsData[integration.name]['last_synced_on'] = timeNow;
               data.integrations_data = updatedIntegrationsData;
               const updatedEntry = await strapi.query('entry').update({ id: matchingEntry.id }, data);
+              delete updatedEntry.created_by;
+              delete updatedEntry.updated_by;
               ctx.send({
                 'result': 'Entry successfully updated.',
                 'entry': updatedEntry,
@@ -492,6 +494,8 @@ module.exports = {
                 'last_synced_on': timeNow,
               }
               const newEntry = await strapi.query('entry').create(data);
+              delete newEntry.created_by;
+              delete newEntry.updated_by;
               ctx.send({
                 'result': 'Entry successfully added.',
                 'entry': newEntry,
